@@ -1,0 +1,21 @@
+{
+  "nome": "Meu próximo concurso",
+  "data": "2027-06-15",
+  "disciplinas": [
+    {
+      "nome": "Língua Portuguesa",
+      "topicos": [
+        "Compreensão e interpretação de textos",
+        "Concordância verbal e nominal"
+      ]
+    },
+    {
+      "nome": "Banco de Dados",
+      "topicos": [
+        "SQL: JOIN, GROUP BY e HAVING",
+        "Transações e propriedades ACID",
+        "Modelagem e normalização"
+      ]
+    }
+  ]
+}

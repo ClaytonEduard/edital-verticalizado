@@ -1,0 +1,10 @@
+# Arquivos que não devem ir para um repositório público
+*.pdf
+*.xlsx
+*.xls
+*backup*.json
+*.env
+.env*
+node_modules/
+.DS_Store
+Thumbs.db

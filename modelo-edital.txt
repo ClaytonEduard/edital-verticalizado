@@ -1,0 +1,17 @@
+CONCURSO: Meu próximo concurso
+DATA: 2027-06-15
+
+DISCIPLINA: Língua Portuguesa
+- Compreensão e interpretação de textos
+- Concordância verbal e nominal
+- Pontuação
+
+DISCIPLINA: Banco de Dados
+- SQL: JOIN, GROUP BY e HAVING
+- Transações e propriedades ACID
+- Modelagem de dados e normalização
+
+DISCIPLINA: Desenvolvimento de Sistemas
+- APIs REST
+- Programação orientada a objetos
+- Testes de software
