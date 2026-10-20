@@ -1,125 +1,48 @@
-# TRILHA — Central de Estudos
+# TRILHA — TCE-GO TI
 
-Site estático em português para acompanhar editais, cronograma, revisão, questões, discursivas e PDFs.
+Aplicação estática e independente de servidor, feita para publicar no GitHub Pages.
 
-**Versão atual:** CGU 2026 — AFFC, Cargo 4 (TI / Desenvolvimento de Sistemas); TCE-GO 2026/2027 — Técnico de Controle Externo, opção B02 (Tecnologia da Informação).
+## Implantação (VS Code + GitHub)
 
-## O que está incluído
-
-- `index.html`: site completo. **Não requer Node, npm, instalação de pacotes nem banco de dados.**
-- `modelo-edital.txt` e `modelo-edital.json`: modelos para cadastrar novos concursos na página **Importar concurso**.
-- `.nojekyll`: simplifica a publicação estática no GitHub Pages.
-- `.gitignore`: ajuda a evitar publicar PDFs e backups pessoais por engano.
-
-O conteúdo inclui **182 correlações de estudos** divididas em assuntos comuns (58), foco CGU (58) e foco TCE-GO (66). Há ainda **207 subitens oficiais da CGU**, **133 recortes temáticos do TCE-GO** (considerando a retificação de legislação institucional), calendário e 9 propostas de discursiva. As pilhas são uma **classificação estratégica**, não uma identificação literal de todas as exclusividades entre os editais.
-
-## Publicar usando VS Code e GitHub
-
-### 1. Preparação
-
-1. Baixe e extraia o ZIP para uma pasta de sua preferência, por exemplo `Documentos\trilha-estudos`.
-2. Abra o **VS Code** → **Arquivo → Abrir Pasta...** → selecione `trilha-estudos`.
-3. Verifique que `index.html` está **na raiz** dessa pasta.
-4. Para testar localmente, clique duas vezes em `index.html` ou instale a extensão *Live Server* no VS Code e use **Open with Live Server**. A publicação no GitHub Pages será feita no passo seguinte.
-
-### 2. Crie um repositório no GitHub
-
-1. Abra https://github.com/new.
-2. Dê um nome, como `trilha-estudos`.
-3. Escolha **Public** (requisito para o GitHub Pages gratuito em muitos planos; confira as opções disponíveis na sua conta).
-4. Clique em **Create repository**. **Não** marque a opção para adicionar README, `.gitignore` ou licença (os arquivos já vêm neste pacote).
-5. Copie a URL HTTPS do repositório. Exemplo: `https://github.com/SEU-USUARIO/trilha-estudos.git`.
-
-### 3. Envie os arquivos pelo terminal integrado do VS Code
-
-Abra **Terminal → Novo Terminal**. Com a pasta `trilha-estudos` aberta, rode os comandos **um por vez**:
+1. Extraia o ZIP e abra a pasta no VS Code. O arquivo `index.html` deve ficar na raiz.
+2. Crie um repositório público no GitHub (por exemplo `trilha-tce-go`).
+3. Execute no terminal do VS Code:
 
 ```bash
-git --version
 git init
-git add .
-git commit -m "Primeira versao do TRILHA"
+git add index.html README.md
+git commit -m "TRILHA TCE-GO - foco exclusivo"
 git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/trilha-estudos.git
+git remote add origin https://github.com/SEU_USUARIO/trilha-tce-go.git
 git push -u origin main
 ```
 
-**Substitua `SEU-USUARIO` pelo seu nome de usuário no GitHub.** O GitHub pode pedir autorização por navegador, Git Credential Manager ou um token — não cole senhas nem tokens no HTML.
+Se o repositório já existe e possui a versão antiga, substitua o `index.html` e faça apenas `git add index.html README.md`, `git commit -m "Foco TCE GO"` e `git push`.
 
-Se o Git solicitar seu nome e e-mail no primeiro commit, configure-os primeiro:
+4. No GitHub, vá a Settings > Pages > Build and deployment > Deploy from a branch > main > / (root) > Save.
+5. Aguarde o deploy e abra `https://SEU_USUARIO.github.io/trilha-tce-go/`.
 
-```bash
-git config --global user.name "Seu nome no Git"
-git config --global user.email "seu-email@example.com"
-```
+## Progresso e dados
 
-Então repita o comando `git commit ...` e siga a sequência.
+- Perfis usam `localStorage` do navegador e da origem; não sincronizam automaticamente dispositivos.
+- O sistema tenta migrar os perfis da versão anterior (`trilha-v3:*`) no **mesmo endereço** do GitHub Pages.
+- Em outro navegador/tablet, vá a Dados e backup > Restaurar backup e selecione o JSON v3 anterior. O perfil `Clayton Eduard` e seus registros serão recuperados.
+- **Nunca envie backup pessoal JSON para um repositório público**, pois pode incluir anotações e links de materiais.
+- Números de prioridade foram preservados exatamente da tabela enviada. No ciclo é possível alternar entre `1 = mais urgente` e `4 = mais urgente`; o padrão é `1 = mais urgente`.
+- Conhecimentos Gerais entram diariamente no ciclo. Os pesos da FCC e a distribuição de questões estão na página inicial.
+- Os 98 tópicos são da tabela personalizada; a página 'Edital oficial' exibe 133 recortes do programa oficial. A 99ª linha da tabela foi reservada à discursiva.
+- O `index.html` não incorpora os PDFs pagos nem dados pessoais de backup.
 
-### 4. Habilite o GitHub Pages
+## Validação rápida
 
-1. Dentro do repositório, abra **Settings → Pages**.
-2. Em **Build and deployment → Source**, escolha **Deploy from a branch**.
-3. Em **Branch**, escolha **main** e a pasta **/(root)**.
-4. Clique em **Save**.
-5. Aguarde o GitHub publicar. A URL normalmente será:
+1. Abra a página no GitHub Pages; em Dados e backup clique em **Testar armazenamento**.
+2. Importe o backup v3 do TRILHA. Confira o nome e as matérias estudadas.
+3. Marque um tópico como concluído, faça uma anotação e atualize com F5.
+4. Confira o ciclo, revisões, histórico de questões e estudo de caso.
 
-`https://SEU-USUARIO.github.io/trilha-estudos/`
+## Fontes / alertas
 
-Você também pode conferir o andamento em **Actions** ou em **Settings → Pages**.
-
-### 5. Atualizações futuras
-
-Depois que mudar o `index.html` no VS Code:
-
-```bash
-git add .
-git commit -m "Atualiza o painel de estudos"
-git push
-```
-
-**Não use `git init` ou `git remote add origin` novamente** quando o repositório já estiver configurado.
-
-## Perfis e salvamento
-
-- O botão **+ Criar perfil** cria um perfil *local*. Marcar conteúdos e escrever anotações salva em `localStorage`, sob chave específica para o perfil e para a origem do site.
-- Dois perfis no **mesmo navegador** têm progressos separados, mas **não há senha, autenticação nem isolamento de segurança**.
-- O GitHub Pages **não salva dados de usuários no repositório**. Os dados **não são automaticamente compartilhados** entre computador, celular e navegadores.
-- Use **Dados e backup → Exportar backup** e importe o arquivo JSON em outro aparelho em **Dados e backup → Restaurar** para transferir o progresso.
-- Se limpar os dados do site, utilizar navegação anônima ou outro navegador, o progresso poderá desaparecer. Faça backups periódicos.
-- A página e o código são públicos: **não inclua arquivos pagos, tokens, dados sigilosos nem backups JSON pessoais no GitHub**.
-
-Para sincronização de dados automática, uma etapa futura poderia integrar autenticação e banco de dados, por exemplo Firebase ou Supabase. Um repositório GitHub Pages puro não fornece banco de dados de escrita por usuário.
-
-## Importar novos editais
-
-Abra a aba **Importar concurso** e selecione um `.txt` ou `.json` seguindo os modelos do pacote.
-
-Exemplo TXT:
-
-```txt
-CONCURSO: Meu próximo concurso
-DATA: 2027-06-15
-DISCIPLINA: Língua Portuguesa
-- Interpretação de textos
-- Concordância verbal
-DISCIPLINA: Banco de Dados
-- SQL
-- Normalização
-```
-
-O importador acrescenta um concurso **ao perfil ativo** e cria sua lista de assuntos sem excluir a CGU ou o TCE-GO. Não é um leitor universal de editais: PDFs e arquivos TXT totalmente livres precisam ser preparados nesse formato antes da importação.
-
-## Biblioteca de PDFs
-
-- No tópico, use **Detalhes → Nome da aula / material** e **Link para o PDF**.
-- Prefira PDFs com o nome **`completo`** (como `aula-00-somente-em-pdf-completo.pdf`).
-- Caso a CGU não tenha disponibilizado o arquivo, marque **Ainda não liberado**.
-- O link da pasta principal do Drive pode ser salvo no perfil, em **Biblioteca de PDFs**, sem ir para o código público.
-- A página não busca automaticamente arquivos dentro do Google Drive: isso exigiria uma integração autenticada, ou uma importação de um catálogo JSON com os links.
-
-## Fontes de conteúdo
-
-- CGU: edital de 2026, conhecimentos básicos (15.2.2), complementares (15.2.3) e Cargo 4 — Desenvolvimento de Sistemas (15.2.4).
-- TCE-GO: Edital nº 01/2026, Anexo II, especialidade B02, e Edital nº 02/2026 de Retificação (distribuição de questões e legislação institucional).
-
-A correlação pedagógica entre os assuntos é uma organização de estudo criada a partir das fontes, sujeita a revisão; não equivale à classificação expressa pelas bancas.
+- Edital nº 01/2026 do TCE-GO e retificação nº 02/2026.
+- O corte de habilitação na prova objetiva depende da **nota padronizada** (mínimo total 150), não de atingir 150 acertos nem de um número fixo de acertos em Gerais.
+- Estudo de caso exige nota >= 50/100 e fica sujeito ao limite de correção previsto no edital.
+- Este site é uma ferramenta de organização de estudos, não um serviço oficial da FCC ou do TCE-GO.
